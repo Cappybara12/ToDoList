@@ -1,0 +1,25 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+    <% for (let index = 0; index<newlistitem.length; index++) { %>
+      <form action="/delete" method="post">
+      <div class="item">
+          <input type="checkbox" onChange="this.form.submit()" value="<%=newlistitem[index]._id%>" name="check">
+         <p><%=newlistitem[index].name%></p> 
+      </div>
+      <!-- we added the hudden input which is a type of functionality in the file -->
+      <input type="hidden" value="<%=listTitle%>" name="listName">
+    </form>
+      <% } %>
+      
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list" value="<%=listTitle%>">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>
